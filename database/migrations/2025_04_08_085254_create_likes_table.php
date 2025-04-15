@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
 
-            //user cannot like a twat more than once
+            //user cannot like a tweet more than once
             $table->unique(['user_id', 'tweet_id']);
         });
     }
