@@ -1,3 +1,3 @@
 <x-layout>
-    Hello from about twats
+    Hello from about Confabulator
 </x-layout>
