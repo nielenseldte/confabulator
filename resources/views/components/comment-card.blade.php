@@ -8,7 +8,7 @@
             <div class="mt-3 border-t border-b border-white py-3">
                 <a href="/users/{{ $comment->user->id }}" class="text-blue-600 underline hover:text-white w-fit">
                     @php
-                        echo '@' . $comment->user->name;
+                        echo '@' . $comment->user->user_name;
                     @endphp
                 </a>
 

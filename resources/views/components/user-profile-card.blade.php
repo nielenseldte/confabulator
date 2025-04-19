@@ -3,7 +3,7 @@
    <div class="flex items-center justify-between">
         <h2 class="text-lg underline decoration-4 decoration-blue-700">
             @php
-                echo "Username" . " - @" . $user->name;
+                echo "Username" . " - @" . $user->user_name;
             @endphp
         </h2>
         <p class="underline decoration-4 decoration-blue-700">{{ $user->tweets_count }} posts</p>
