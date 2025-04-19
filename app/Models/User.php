@@ -92,5 +92,25 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function dislikes(): HasMany
+    {
+        return $this->hasMany(Dislike::class);        
+    }
+
+    public function hasLiked(Tweet $tweet): bool
+    {
+        return $this->likes()->where('tweet_id', $tweet->id)->exists();
+    }
+
+    public function hasDisliked(Tweet $tweet): bool
+    {
+        return $this->likes()->where('tweet_id', $tweet->id)->exists();
+    }
+
 
 }

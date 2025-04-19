@@ -1,3 +1,4 @@
+@props(['nav' => true])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,18 +17,10 @@
 
     <div class="px-10">
 
-        <nav class="flex items-center justify-center py-4 border-b border-white/10">
-           
+        @if ($nav) 
+            <x-nav-bar />
+        @endif
 
-            <div class="space-x-6">
-                <x-nav-link href="/tweets" :active="request()->is('tweets')">Feed</x-nav-link>
-                <x-nav-link href="/trending" :active="request()->is('trending')">Trending</x-nav-link>
-                {{-- <x-nav-link href="#" :active="request()->is('trending')">My Twats</x-nav-link> --}}
-                <x-nav-link href="/about" :active="request()->is('about')">About Confabulator</x-nav-link>
-
-            </div>
-
-        </nav>
 
         <main class="mt-10 max-w-[986px] mx-auto">
             {{ $slot }}
