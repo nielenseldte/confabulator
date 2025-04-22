@@ -19,7 +19,7 @@
                 </li>
                 <li class="mb-4">
                     <strong>Rule #3 - No Profanity:</strong> Our discourse is polished and intellectual, leaving no room for
-                    coarse language.
+                    any profanity.
                 </li>
                 <li class="mb-4">
                     <strong>Rule #4 - No Political Discussions:</strong> While politics has its merits, classy individuals
@@ -40,7 +40,7 @@
             </ol>
             <p class="text-lg mt-4">
                 These rules are the foundation of our community, ensuring that Confabulator remains a beacon of class
-                and sophistication. Together, let’s create a space where intellect and elegance flourish. <strong>NOTE</strong> that anyone who is found to not have complied with the above rules will be removed from Confabulator
+                and sophistication. Together, let’s create a space where intellect and elegance flourish. <strong>NOTE</strong> that anyone who is found to not have complied with the above rules will be removed from Confabulator.
             </p>
         </div>
 
