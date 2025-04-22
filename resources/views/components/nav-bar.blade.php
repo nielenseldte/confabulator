@@ -14,7 +14,7 @@
             </div>
             @auth
                 <div class="space-x-6 font-bold flex">
-                    <span>Username</span>
+                    <a class="hover:text-blue-700" href="/users/{{ Auth::user()->id }}">{{ Auth::user()->user_name }}</a>
                     <form method="POST" action="/logout">
                         @csrf
                         @method('DELETE')

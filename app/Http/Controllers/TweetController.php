@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
@@ -33,7 +34,18 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'tweet' => ['required', 'min:2']
+        ]);
+
+        $user = Auth::user();
+
+        Tweet::create([
+            'user_id' => $user->id,
+            'body' => request('tweet')
+        ]);
+
+        return redirect('/');
     }
 
     /**
