@@ -64,15 +64,17 @@ class TweetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tweet $tweets)
+    public function edit(Tweet $tweet)
     {
-        //
+        return view('tweets.edit', [
+            'tweet' => $tweet
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tweet $tweets)
+    public function update(Request $request, Tweet $tweet)
     {
         //
     }
@@ -80,7 +82,7 @@ class TweetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tweet $tweets)
+    public function destroy(Tweet $tweet)
     {
         //
     }

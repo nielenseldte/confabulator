@@ -1,5 +1,5 @@
 @props(['tweet'])
-<x-tweet-panel-borderless>
+<x-tweet-panel-borderless id="tweet-{{ $tweet->id }}">
     <div class="flex items-center justify-between">
         <a href="/users/{{ $tweet->user->id }}" class="text-xl text-blue-600 underline hover:text-white w-fit">
             @php
@@ -9,25 +9,30 @@
 
     </div>
     <p class="break-words">{!! nl2br($tweet->body) !!}</p>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-4">
         <p class="mt-2 text-xs">
             {{ $tweet->created_at->isToday() ? 'Today | ' . $tweet->created_at->format('H:m') : ($tweet->created_at->isYesterday() ? 'Yesterday | ' . $tweet->created_at->format('H:m') : $tweet->created_at->format('d-m-Y | H:m')) }}
         </p>
 
         <div class="space-x-1">
 
-            <x-interact-button type="like" />
+            <x-interact-button type="like" form="like-form" />
             <span>{{ $tweet->likes_count }}</span>
 
 
-            <x-interact-button type="dislike" />
+            <x-interact-button type="dislike" form="dislike-form" />
             <span>{{ $tweet->dislikes_count }}</span>
 
         </div>
     </div>
-    <div>
-        <button>Edit tweet Button</button>
-        <button>Delete tweet Button</button>
+    <div class="flex justify-start space-x-2">
+        <x-manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-manage-button>
+        <x-manage-button type="delete">Delete</x-manage-button>
     </div>
+    <form action="/tweets/{{ $tweet->id }}/like" method="POST" id="like-form" class="hidden">
+        @csrf
+    </form>
+    <form action="/tweets/{{ $tweet->id }}/dislike" method="POST" id="dislike-form" class="hidden">
+        @csrf
+    </form>
 </x-tweet-panel-borderless>
-
