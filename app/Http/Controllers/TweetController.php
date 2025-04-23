@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
@@ -33,7 +34,18 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'tweet' => ['required', 'min:2']
+        ]);
+
+        $user = Auth::user();
+
+        Tweet::create([
+            'user_id' => $user->id,
+            'body' => request('tweet')
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -52,15 +64,17 @@ class TweetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tweet $tweets)
+    public function edit(Tweet $tweet)
     {
-        //
+        return view('tweets.edit', [
+            'tweet' => $tweet
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tweet $tweets)
+    public function update(Request $request, Tweet $tweet)
     {
         //
     }
@@ -68,7 +82,7 @@ class TweetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tweet $tweets)
+    public function destroy(Tweet $tweet)
     {
         //
     }

@@ -3,11 +3,13 @@
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ViewUserController;
+use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\TrendingTweetsController;
 
 Route::redirect('/', '/tweets');
@@ -32,3 +34,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::delete('/logout', [SessionController::class, 'destroy']);
+
+//Like and Dislike
+Route::post('/tweets/{tweet}/like', [LikeController::class, 'store']);
+Route::post('/tweets/{tweet}/dislike', [DislikeController::class, 'store']);

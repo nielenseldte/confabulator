@@ -9,7 +9,7 @@
     
             <div class="mt-8 flex justify-center gap-x-6">
                 <x-forms.danger-button buttonType="a" href="/tweets">Cancel</x-forms.danger-button>
-                <x-forms.button>Post Twat</x-forms.button>
+                <x-forms.button>Post</x-forms.button>
             </div>
         </x-forms.form>
    </div>

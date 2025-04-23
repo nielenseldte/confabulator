@@ -109,7 +109,7 @@ class User extends Authenticatable
 
     public function hasDisliked(Tweet $tweet): bool
     {
-        return $this->likes()->where('tweet_id', $tweet->id)->exists();
+        return $this->dislikes()->where('tweet_id', $tweet->id)->exists();
     }
 
 
