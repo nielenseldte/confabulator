@@ -6,7 +6,7 @@
     <x-section-heading>Edit</x-section-heading>
 
     <div class="mt-8">
-        <x-forms.form method="POST" action="/tweets">
+        <x-forms.form method="POST" action="/tweets/{{ $tweet->id }}">
             @method('PATCH')
             <x-forms.textarea label="Message content" name="tweet">{{ $tweet->body }}</x-forms.textarea>
 

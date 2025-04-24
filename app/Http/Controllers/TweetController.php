@@ -26,6 +26,10 @@ class TweetController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect('/login');
+        }
         return view('tweets.create');
     }
 
@@ -76,7 +80,15 @@ class TweetController extends Controller
      */
     public function update(Request $request, Tweet $tweet)
     {
-        //
+        $request->validate([
+            'tweet' => ['required', 'min:2']
+        ]);
+
+        $tweet->update([
+            'body' => request('tweet')
+        ]);
+
+        return redirect('/tweets/' . $tweet->id);
     }
 
     /**

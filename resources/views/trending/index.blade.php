@@ -1,5 +1,5 @@
 <x-layout>
-    <x-section-heading>Trending Twats</x-section-heading>
+    <x-section-heading>Trending Conversations</x-section-heading>
 
 
     <div class="flex items-center justify-end">
