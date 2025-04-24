@@ -26,6 +26,10 @@ class TweetController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect('/login');
+        }
         return view('tweets.create');
     }
 

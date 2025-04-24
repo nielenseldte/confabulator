@@ -1,5 +1,5 @@
 @props(['tweet'])
-<x-tweet-panel-borderless id="tweet-{{ $tweet->id }}">
+<x-tweet-panel-borderless>
     <div class="flex items-center justify-between">
         <a href="/users/{{ $tweet->user->id }}" class="text-xl text-blue-600 underline hover:text-white w-fit">
             @php
@@ -16,11 +16,11 @@
 
         <div class="space-x-1">
 
-            <x-interact-button type="like" form="like-form" />
+             <x-interact-button type="like" form="like-form" :active="Auth::check() ? Auth::user()->hasLiked($tweet) : false" />
             <span>{{ $tweet->likes_count }}</span>
 
 
-            <x-interact-button type="dislike" form="dislike-form" />
+            <x-interact-button type="dislike" form="dislike-form" :active="Auth::check() ? Auth::user()->hasDisliked($tweet) : false" />
             <span>{{ $tweet->dislikes_count }}</span>
 
         </div>
