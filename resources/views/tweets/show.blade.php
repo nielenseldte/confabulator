@@ -1,6 +1,7 @@
  @php
      $previousUrl = url()->previous();
      $currentUrl = url()->current();
+     $comments = $tweet->comments->sortByDesc('created_at');
  @endphp
  <x-layout>
      <div class="ml-3 flex justify-start"><x-back-button

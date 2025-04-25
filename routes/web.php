@@ -7,6 +7,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ViewUserController;
 use App\Http\Controllers\RegisteredUserController;
@@ -25,6 +26,7 @@ Route::get('/users/{user}', [ViewUserController::class, 'show']);
 Route::get('/trending', [TrendingTweetsController::class, 'index']);
 
 Route::get('/tweets/{tweet}/comments/create', [CommentController::class, 'create']);
+Route::post('/tweets/{tweet}/comments/create', [CommentController::class, 'store']);
 
 //Auth
 
@@ -38,3 +40,7 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 //Like and Dislike
 Route::post('/tweets/{tweet}/like', [LikeController::class, 'store']);
 Route::post('/tweets/{tweet}/dislike', [DislikeController::class, 'store']);
+
+//Follow and Unfollow
+Route::post('/users/{user}/follow', [FollowController::class, 'store']);
+Route::delete('/users/{user}/unfollow', [FollowController::class, 'destroy']);

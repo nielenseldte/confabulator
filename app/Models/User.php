@@ -82,6 +82,7 @@ class User extends Authenticatable
         ];
     }
 
+    //Relationships
     public function tweets(): HasMany
     {
         return $this->hasMany(Tweet::class);
@@ -102,6 +103,19 @@ class User extends Authenticatable
         return $this->hasMany(Dislike::class);        
     }
 
+    public function followedUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_follower', 'follower_id', 'followed_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_follower', 'followed_id', 'follower_id');
+    }
+
+
+
+    //Helper methods
     public function hasLiked(Tweet $tweet): bool
     {
         return $this->likes()->where('tweet_id', $tweet->id)->exists();
@@ -110,6 +124,11 @@ class User extends Authenticatable
     public function hasDisliked(Tweet $tweet): bool
     {
         return $this->dislikes()->where('tweet_id', $tweet->id)->exists();
+    }
+
+    public function isFollowing(User $user): bool
+    {
+        return $this->followedUsers()->where('followed_id', $user->id)->exists();
     }
 
 

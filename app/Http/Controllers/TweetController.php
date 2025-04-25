@@ -14,7 +14,25 @@ class TweetController extends Controller
      */
     public function index()
     {
-        $tweets = Tweet::latest()->with(['user', 'likes', 'dislikes'])->withCount(['likes', 'dislikes'])->simplePaginate(5);
+        if (!Auth::check()) {
+            $tweets = Tweet::latest()->with(['user', 'likes', 'dislikes'])->withCount(['likes', 'dislikes'])->simplePaginate(5);
+        } else{
+            $tweets = Tweet::latest()
+                ->with([
+                    'user',
+                    'likes' => function ($query) {
+                        $query->where('user_id', Auth::user()->id);
+                    },
+                    'dislikes' => function ($query) {
+                        $query->where('user_id', Auth::user()->id);
+                    }
+                ])
+                ->withCount(['likes', 'dislikes'])
+                ->simplePaginate(5);
+
+        }
+
+        
 
         return view('tweets.index', [
             'tweets' => $tweets
@@ -57,11 +75,24 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        $tweet->load(['user', 'comments.user', 'likes', 'dislikes'])->loadCount(['likes', 'dislikes']);
+        
+        if (!Auth::check()) {
+            $tweet->load(['user', 'comments.user', 'likes', 'dislikes'])->loadCount(['likes', 'dislikes']);
+        }else {
+            $tweet->load([
+                'user',
+                'comments.user',
+                'likes' => function ($query) {
+                    $query->where('user_id', Auth::user()->id);
+                },
+                'dislikes' => function ($query) {
+                    $query->where('user_id', Auth::user()->id);
+                }
+            ])->loadCount(['likes', 'dislikes']);
+        }
         
         return view('tweets.show', [
-            'tweet' => $tweet,
-            'comments' => $tweet->comments
+            'tweet' => $tweet
         ]);
     }
 

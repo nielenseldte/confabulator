@@ -21,11 +21,11 @@
 
         <div class="space-x-1">
 
-            <x-interact-button type="like" form="like-form-{{ $tweet->id }}" :active="Auth::check() ? Auth::user()->hasLiked($tweet) : false" />
+            <x-interact-button type="like" form="like-form-{{ $tweet->id }}" :active="Auth::check() && $tweet->likes->isNotEmpty()" />
             <span>{{ $tweet->likes_count }}</span>
 
 
-            <x-interact-button type="dislike" form="dislike-form-{{ $tweet->id }}" :active="Auth::check() ? Auth::user()->hasDisliked($tweet) : false" />
+            <x-interact-button type="dislike" form="dislike-form-{{ $tweet->id }}" :active="Auth::check() && $tweet->dislikes->isNotEmpty()" />
             <span>{{ $tweet->dislikes_count }}</span>
 
         </div>
