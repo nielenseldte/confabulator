@@ -16,19 +16,21 @@
 
         <div class="space-x-1">
 
-             <x-interact-button type="like" form="like-form" :active="Auth::check() ? Auth::user()->hasLiked($tweet) : false" />
+             <x-interact-button type="like" form="like-form" :active="Auth::check() && $tweet->likes->isNotEmpty()" />
             <span>{{ $tweet->likes_count }}</span>
 
 
-            <x-interact-button type="dislike" form="dislike-form" :active="Auth::check() ? Auth::user()->hasDisliked($tweet) : false" />
+            <x-interact-button type="dislike" form="dislike-form" :active="Auth::check() && $tweet->dislikes->isNotEmpty()" />
             <span>{{ $tweet->dislikes_count }}</span>
 
         </div>
     </div>
-    <div class="flex justify-start space-x-2">
-        <x-manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-manage-button>
-        <x-manage-button type="delete">Delete</x-manage-button>
-    </div>
+    @can ('edit-tweet', $tweet) 
+        <div class="flex justify-start space-x-2">
+            <x-manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-manage-button>
+            <x-manage-button type="delete">Delete</x-manage-button>
+        </div>
+    @endcan
     <form action="/tweets/{{ $tweet->id }}/like" method="POST" id="like-form" class="hidden">
         @csrf
     </form>

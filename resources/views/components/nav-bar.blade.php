@@ -14,12 +14,12 @@
             </div>
             @auth
                 <div class="space-x-6 font-bold flex">
-                    <a class="hover:text-blue-700" href="/users/{{ Auth::user()->id }}">{{ Auth::user()->user_name }}</a>
+                    <a class="hover:text-blue-700 underline" href="/users/{{ Auth::user()->id }}">{{ Auth::user()->user_name }}</a>
                     <form method="POST" action="/logout">
                         @csrf
                         @method('DELETE')
 
-                        <button>Log Out</button>
+                        <button class="hover:text-red-600 cursor-pointer">Log Out</button>
                     </form>
                 </div>
 

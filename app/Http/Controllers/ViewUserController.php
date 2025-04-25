@@ -10,7 +10,7 @@ class ViewUserController extends Controller
   
     public function show(User $user)
     {
-        $user->loadCount('tweets');
+        $user->loadCount(['tweets', 'followers']);
         return view('users.show', [
             'user' => $user
         ]);
