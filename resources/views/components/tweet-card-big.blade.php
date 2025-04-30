@@ -28,8 +28,14 @@
     @can ('edit-tweet', $tweet) 
         <div class="flex justify-start space-x-2">
             <x-manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-manage-button>
-            <x-manage-button type="delete">Delete</x-manage-button>
+            <x-manage-button type="delete" form="delete-form">Delete</x-manage-button>
         </div>
+    @endcan
+    @can ('edit-tweet', $tweet) 
+        <form action="/tweets/{{ $tweet->id }}" method="POST" id="delete-form" class="hidden">
+            @csrf
+            @method('DELETE')
+        </form>
     @endcan
     <form action="/tweets/{{ $tweet->id }}/like" method="POST" id="like-form" class="hidden">
         @csrf
