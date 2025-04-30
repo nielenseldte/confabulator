@@ -9,9 +9,9 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\ViewUserController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\TrendingTweetsController;
+use App\Http\Controllers\UserProfileController;
 
 Route::redirect('/', '/tweets');
 
@@ -21,7 +21,11 @@ Route::get('/about', function() {
     return view('about');
 });
 
-Route::get('/users/{user}', [ViewUserController::class, 'show']);
+// Route::get('/users/{user}', [ViewUserController::class, 'show']);
+// Route::get('/users/{user}/edit', [ViewUserController::class, 'edit']);
+
+Route::resource('users', UserProfileController::class)->only(['show', 'edit']);
+
 
 Route::get('/trending', [TrendingTweetsController::class, 'index']);
 

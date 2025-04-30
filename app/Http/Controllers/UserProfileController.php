@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ViewUserController extends Controller
+class UserProfileController extends Controller
 {
   
     public function show(User $user)
@@ -14,6 +14,11 @@ class ViewUserController extends Controller
         return view('users.show', [
             'user' => $user
         ]);
+    }
+
+    public function edit(User $user)
+    {
+        dd('edit user route');
     }
 
     

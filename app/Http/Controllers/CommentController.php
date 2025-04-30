@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function create(Tweet $tweet)
     {
         if (!Auth::check()) {
-            $tweet->load(['user', 'likes', 'dislikes'])->loadCount(['likes', 'dislikes']);
+            return redirect('/login');
         }else {
             $tweet->load([
                 'user',

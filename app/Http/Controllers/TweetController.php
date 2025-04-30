@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
@@ -62,11 +63,18 @@ class TweetController extends Controller
 
         $user = Auth::user();
 
-        Tweet::create([
+        $tweet = Tweet::create([
             'user_id' => $user->id,
             'body' => request('tweet')
         ]);
 
+        Log::info('Tweet created by user', [
+            'tweet_id' => $tweet->id,
+            'user_id' => $user->id,
+            'tweet_content' => $tweet->body
+        ]);
+
+        // redirect()->route('tweets.index');
         return redirect('/');
     }
 
@@ -127,6 +135,12 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
-        //
+        Log::info('Tweet deleted by user', [
+            'tweet_id' => $tweet->id,
+            'user_id' => Auth::id(),
+            'timestamp' => now()
+        ]);
+        $tweet->delete();
+        return redirect('/tweets')->with('success', 'Tweet deleted successfully.');;
     }
 }
