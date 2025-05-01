@@ -12,13 +12,31 @@ class UserProfileController extends Controller
     {
         $user->loadCount(['tweets', 'followers']);
         return view('users.show', [
-            'user' => $user
+            'user' => $user,
+            'previousUrl' => url()->previous(),
+            'currentUrl' => url()->current()
         ]);
     }
 
     public function edit(User $user)
     {
-        dd('edit user route');
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'user_name' => ['required', 'min:2'],
+        ]);
+
+        $user->update([
+            'user_name' => request('user_name'),
+            'about' => request('about')
+        ]);
+
+        return redirect('/users/' . $user->id);
     }
 
     

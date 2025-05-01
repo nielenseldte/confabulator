@@ -24,7 +24,7 @@ Route::get('/about', function() {
 // Route::get('/users/{user}', [ViewUserController::class, 'show']);
 // Route::get('/users/{user}/edit', [ViewUserController::class, 'edit']);
 
-Route::resource('users', UserProfileController::class)->only(['show', 'edit']);
+Route::resource('users', UserProfileController::class)->only(['show', 'edit', 'update']);
 
 
 Route::get('/trending', [TrendingTweetsController::class, 'index']);

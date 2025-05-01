@@ -8,7 +8,7 @@
     <title>Confabulator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@400;500;600&display=swap"
         rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

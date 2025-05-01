@@ -1,10 +1,4 @@
 <x-layout>
-    @php
-        $previousUrl = url()->previous();
-        $currentUrl = url()->current();
-        $authenticated_user = Auth::user();
-    @endphp
-
     <div class="flex justify-between items-center">
         <x-back-button href="{{ $previousUrl !== $currentUrl ? $previousUrl : '/tweets' }}" class="border">Back</x-back-button>
         @auth
@@ -18,7 +12,7 @@
         @endauth
     </div>
 
-    @if (Auth::user()->id !== $user->id) 
+    @if (!Auth::user() || Auth::user()->id !== $user->id) 
         <x-section-heading>Viewing Profile Of {{ $user->user_name }}</x-section-heading>
     @else
         <x-section-heading>Your Profile</x-section-heading>
