@@ -1,5 +1,5 @@
 @props(['error' => false])
 
 @if ($error)
-    <p class="text-sm text-red-500 bg-red-300 px-2 py-2 border border-red-500 rounded-md">{{ $error }}</p>
+    <p class="mt-2 text-sm text-red-600 bg-black px-2 py-2 border-t border-b border-red-600">ERROR: {{ $error }}</p>
 @endif
