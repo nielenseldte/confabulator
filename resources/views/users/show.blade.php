@@ -1,6 +1,6 @@
 <x-layout>
     <div class="flex justify-between items-center">
-        <x-back-button href="{{ $previousUrl !== $currentUrl ? $previousUrl : '/tweets' }}" class="border">Back</x-back-button>
+        <x-back-button href="{{ $previousUrl !== $currentUrl && $previousUrl !== route('users.edit', ['user' => $user->id]) ? $previousUrl : '/tweets' }}" class="border">Back</x-back-button>
         @auth
             @if (Auth::user() && Auth::user()->id !== $user->id) 
                 @if (!Auth::user()->isFollowing($user)) 

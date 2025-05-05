@@ -47,6 +47,14 @@ class Tweet extends Model
         $query->with(['user', 'likes', 'dislikes'])->withCount(['likes', 'dislikes'])->whereRaw('(likes_count + dislikes_count) > ?', [10])->orderByRaw('likes_count + dislikes_count DESC');
     }
 
+    #[Scope]
+    protected function feed(Builder $query, User $user): void
+    {
+        $query->whereHas('user.followers', function ($query) use ($user) {
+            $query->where('follower_id', $user->id);
+        });
+    }
+
 
     public function user(): BelongsTo
     {

@@ -7,6 +7,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisteredUserController;
@@ -29,7 +30,9 @@ Route::resource('users', UserProfileController::class)->only(['show', 'edit', 'u
 
 Route::get('/trending', [TrendingTweetsController::class, 'index']);
 
-Route::get('/tweets/{tweet}/comments/create', [CommentController::class, 'create']);
+Route::get('/users/{user}/feed', [FeedController::class, 'index']);
+
+Route::get('/tweets/{tweet}/comments/create', [CommentController::class, 'create'])->name('comments.create');
 Route::post('/tweets/{tweet}/comments/create', [CommentController::class, 'store']);
 
 //Auth

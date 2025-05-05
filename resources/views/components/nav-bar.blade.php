@@ -7,7 +7,10 @@
             </div>
 
             <div class="space-x-6">
-                <x-nav-link href="/tweets" :active="request()->is('tweets')">Feed</x-nav-link>
+                <x-nav-link href="/tweets" :active="request()->is('tweets')">Latest</x-nav-link>
+                @auth
+                    <x-nav-link href="/users/{{ Auth::user()->id }}/feed" :active="request()->is('users/' . Auth::user()->id . '/feed')">Feed</x-nav-link>
+                @endauth
                 <x-nav-link href="/trending" :active="request()->is('trending')">Trending</x-nav-link>
                 <x-nav-link href="/about" :active="request()->is('about')">About Confabulator</x-nav-link>
 
