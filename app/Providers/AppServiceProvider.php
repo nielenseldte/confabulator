@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
 use App\Models\User;
 use App\Models\Tweet;
 use Illuminate\Support\Facades\Gate;
@@ -25,9 +26,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard(true);
+        Model::preventLazyLoading(! app()->isProduction());
 
         Gate::define('edit-tweet', function (User $user, Tweet $tweet) {
             return $user->id === $tweet->user_id;
+        });
+
+        Gate::define('delete-comment', function (User $user, Comment $comment) {
+            return $user->id === $comment->user_id;
         });
 
         Gate::define('edit-profile', function(User $user, User $profileUser){

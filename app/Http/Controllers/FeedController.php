@@ -14,23 +14,28 @@ class FeedController extends Controller
      */
     public function index(User $user)
     {
-        $tweets = Tweet::feed($user)->with([
-            'user',
-            'likes' => function ($query) use ($user) {
-                $query->where('user_id', $user->id);
-            },
-            'dislikes' => function ($query) use ($user) {
-                $query->where('user_id', $user->id);
-            }
-        ])
-        ->latest()
-        ->withCount(['likes', 'dislikes'])
-        ->simplePaginate(5);
+        if (Auth::user()->id === $user->id) {
+            $tweets = Tweet::feed($user)->with([
+                'user',
+                'likes' => function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                },
+                'dislikes' => function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                }
+            ])
+                ->latest()
+                ->withCount(['likes', 'dislikes'])
+                ->simplePaginate(5);
 
 
-        return view('feed.index', [
-            'tweets' => $tweets
-        ]);
+            return view('feed.index', [
+                'tweets' => $tweets
+            ]);
+        } else {
+            abort(403);
+        }
+        
     }
 
     

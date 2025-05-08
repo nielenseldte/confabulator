@@ -10,7 +10,8 @@ class UserProfileController extends Controller
   
     public function show(User $user)
     {
-        $user->loadCount(['tweets', 'followers']);
+        $user->loadCount(['tweets', 'followers', 'followedUsers']);
+        //dd($user->toArray());
         return view('users.show', [
             'user' => $user,
             'previousUrl' => url()->previous(),

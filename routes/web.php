@@ -32,8 +32,8 @@ Route::get('/trending', [TrendingTweetsController::class, 'index']);
 
 Route::get('/users/{user}/feed', [FeedController::class, 'index']);
 
-Route::get('/tweets/{tweet}/comments/create', [CommentController::class, 'create'])->name('comments.create');
-Route::post('/tweets/{tweet}/comments/create', [CommentController::class, 'store']);
+Route::resource('tweets.comments', CommentController::class)->only(['create', 'store', 'destroy']);
+
 
 //Auth
 
