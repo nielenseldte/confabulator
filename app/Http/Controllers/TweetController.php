@@ -7,9 +7,11 @@ use App\Models\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class TweetController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -119,6 +121,7 @@ class TweetController extends Controller
      */
     public function update(Request $request, Tweet $tweet)
     {
+        $this->authorize('edit-tweet', $tweet);
         $request->validate([
             'tweet' => ['required', 'min:2']
         ]);

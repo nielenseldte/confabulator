@@ -5,6 +5,7 @@
         <x-manage-button type="delete">Delete</x-manage-button>
     </div>
 @endcan
+
 <div class="border border-blue-700 p-5 flex flex-col space-y-5 w-3/4 mx-auto mt-2 rounded-xl">
     <div class="flex items-center justify-between">
         <div>
@@ -16,6 +17,7 @@
         </div>
         <div class="flex space-x-3">
             <p class="underline decoration-4 decoration-blue-700">{{ $user->followers_count }} followers</p>
+            <p class="underline decoration-4 decoration-blue-700">{{ $user->followed_users_count }} following</p>
             <p class="underline decoration-4 decoration-blue-700">{{ $user->tweets_count }} posts</p>
         </div>
     </div>

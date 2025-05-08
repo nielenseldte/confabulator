@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Tweet;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
-  
+
 
     /**
      * Show the form for creating a new resource.
@@ -18,7 +20,7 @@ class CommentController extends Controller
     {
         if (!Auth::check()) {
             return redirect('/login');
-        }else {
+        } else {
             $tweet->load([
                 'user',
                 'likes' => function ($query) {
@@ -29,7 +31,7 @@ class CommentController extends Controller
                 }
             ])->loadCount(['likes', 'dislikes']);
         }
-        
+
         return view('comments.create', [
             'tweet' => $tweet
         ]);
@@ -43,7 +45,7 @@ class CommentController extends Controller
         $request->validate([
             'comment' => ['required']
         ]);
-       
+
         $user = Auth::user();
         Comment::create([
             'user_id' => $user->id,
@@ -57,8 +59,22 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tweet $tweet, Comment $comment)
     {
-        //
+        Log::info('DELETE request URL:', ['url' => request()->fullUrl()]);
+
+        if (!Gate::allows('delete-comment', $comment)) {
+            abort(403);
+        }
+        
+
+        $comment->delete();
+        Log::info('Comment deleted by user', [
+            'comment_id' => $comment->id,
+            'user_id' => Auth::id(),
+            'timestamp' => now()
+        ]);
+
+        return redirect()->route('tweets.show', ['tweet' => $tweet->id]);
     }
 }
