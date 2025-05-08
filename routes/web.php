@@ -36,7 +36,6 @@ Route::resource('tweets.comments', CommentController::class)->only(['create', 's
 
 
 //Auth
-
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
