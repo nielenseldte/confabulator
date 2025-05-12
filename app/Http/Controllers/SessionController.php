@@ -25,13 +25,11 @@ class SessionController extends Controller
             throw ValidationException::withMessages([
                 'email' => 'Sorry, those credentials do not match'
             ]);
-            
         }
 
         request()->session()->regenerate();
 
         return redirect('/');
-        
     }
 
     public function destroy()

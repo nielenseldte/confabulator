@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
- 
 
- 
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -32,10 +32,9 @@ class LikeController extends Controller
             $user->likes()->create(['tweet_id' => $tweet->id]);
 
             return redirect()->back()->withFragment('tweet-' . $tweet->id);
-        }else {
+        } else {
             $user->likes()->where('tweet_id', '=', $tweet_id)->delete();
             return redirect()->back()->withFragment('tweet-' . $tweet->id);
         }
     }
-
 }

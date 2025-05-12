@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TrendingTweetsController extends Controller
 {
-   
+
     public function index()
     {
         if (!Auth::check()) {
             $tweets = Tweet::trending()->with(['likes', 'dislikes', 'user'])->withCount(['likes', 'dislikes'])->simplePaginate(5);
-        }else {
+        } else {
             $tweets = Tweet::trending()->with([
                 'user',
                 'likes' => function ($query) {
@@ -31,8 +31,4 @@ class TrendingTweetsController extends Controller
             'tweets' => $tweets
         ]);
     }
-
-
-
-   
 }

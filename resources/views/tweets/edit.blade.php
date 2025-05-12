@@ -1,7 +1,3 @@
-@php
-    $previousUrl = url()->previous();
-    $currentUrl = url()->current();
-@endphp
 <x-layout>
     <x-section-heading>Edit</x-section-heading>
 

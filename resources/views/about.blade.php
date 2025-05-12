@@ -10,37 +10,46 @@
             <h1 class="text-2xl font-bold text-center text-blue-700 mb-6">Our 7 Rules of Engagement:</h1>
             <ol type="1" class="pl-5 list-decimal text-lg leading-relaxed">
                 <li class="mb-4">
-                    <strong>Rule #1 - No Swearing:</strong> Swearing is a sign of a weak mind and a weaker character, reflecting a
+                    <strong>Rule #1 - No Swearing:</strong> Swearing is a sign of a weak mind and a weaker character,
+                    reflecting a
                     lack of restraint and poise.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #2 - No Bullying:</strong> Kindness is the hallmark of the truly refined. Confabulator is a safe
+                    <strong>Rule #2 - No Bullying:</strong> Kindness is the hallmark of the truly refined. Confabulator
+                    is a safe
                     space, where everyone’s voice is valued and treated with respect.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #3 - No Profanity:</strong> Our discourse is polished and intellectual, leaving no room for
+                    <strong>Rule #3 - No Profanity:</strong> Our discourse is polished and intellectual, leaving no room
+                    for
                     any profanity.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #4 - No Political Discussions:</strong> While politics has its merits, classy individuals
+                    <strong>Rule #4 - No Political Discussions:</strong> While politics has its merits, classy
+                    individuals
                     understand that certain topics are best left offline.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #5 - No Slang Language:</strong> Confabulator is a place for people of sophistication; we strive
+                    <strong>Rule #5 - No Slang Language:</strong> Confabulator is a place for people of sophistication;
+                    we strive
                     for eloquence and steer clear of informal or slang expressions.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #6 - Act Like Intellectuals:</strong> Celebrate your intellect by engaging with respect,
+                    <strong>Rule #6 - Act Like Intellectuals:</strong> Celebrate your intellect by engaging with
+                    respect,
                     curiosity, and a commitment to thoughtful dialogue.
                 </li>
                 <li class="mb-4">
-                    <strong>Rule #7 - Be Constructive:</strong> Conversations should inspire growth and mutual understanding.
+                    <strong>Rule #7 - Be Constructive:</strong> Conversations should inspire growth and mutual
+                    understanding.
                     Share ideas that build others up and contribute positively to the community.
                 </li>
             </ol>
             <p class="text-lg mt-4">
                 These rules are the foundation of our community, ensuring that Confabulator remains a beacon of class
-                and sophistication. Together, let’s create a space where intellect and elegance flourish. <strong>NOTE</strong> that anyone who is found to not have complied with the above rules will be removed from Confabulator.
+                and sophistication. Together, let’s create a space where intellect and elegance flourish.
+                <strong>NOTE</strong> that anyone who is found to not have complied with the above rules will be removed
+                from Confabulator.
             </p>
         </div>
 

@@ -10,7 +10,7 @@ use App\Models\Like;
 
 class DislikeController extends Controller
 {
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,5 +36,4 @@ class DislikeController extends Controller
             return redirect()->back()->withFragment('tweet-' . $tweet->id);
         }
     }
-
 }
