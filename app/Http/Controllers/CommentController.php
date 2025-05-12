@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use App\Models\Comment;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
+    use AuthorizesRequests;
 
 
     /**
@@ -33,7 +34,9 @@ class CommentController extends Controller
         }
 
         return view('comments.create', [
-            'tweet' => $tweet
+            'tweet' => $tweet,
+            'previousUrl' => url()->previous(),
+            'currentUrl' => url()->current()
         ]);
     }
 
@@ -61,12 +64,8 @@ class CommentController extends Controller
      */
     public function destroy(Tweet $tweet, Comment $comment)
     {
+        $this->authorize('delete-comment', $comment);
         Log::info('DELETE request URL:', ['url' => request()->fullUrl()]);
-
-        if (!Gate::allows('delete-comment', $comment)) {
-            abort(403);
-        }
-        
 
         $comment->delete();
         Log::info('Comment deleted by user', [

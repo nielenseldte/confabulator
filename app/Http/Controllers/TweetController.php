@@ -19,7 +19,7 @@ class TweetController extends Controller
     {
         if (!Auth::check()) {
             $tweets = Tweet::latest()->with(['user', 'likes', 'dislikes'])->withCount(['likes', 'dislikes'])->simplePaginate(5);
-        } else{
+        } else {
             $tweets = Tweet::latest()
                 ->with([
                     'user',
@@ -32,10 +32,8 @@ class TweetController extends Controller
                 ])
                 ->withCount(['likes', 'dislikes'])
                 ->simplePaginate(5);
-
         }
 
-        
 
         return view('tweets.index', [
             'tweets' => $tweets
@@ -47,8 +45,8 @@ class TweetController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        if (!$user) {
+       
+        if (!Auth::check()) {
             return redirect('/login');
         }
         return view('tweets.create');
@@ -85,10 +83,10 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        
+
         if (!Auth::check()) {
             $tweet->load(['user', 'comments.user', 'likes', 'dislikes'])->loadCount(['likes', 'dislikes']);
-        }else {
+        } else {
             $tweet->load([
                 'user',
                 'comments.user',
@@ -100,9 +98,12 @@ class TweetController extends Controller
                 }
             ])->loadCount(['likes', 'dislikes']);
         }
-        
+
         return view('tweets.show', [
-            'tweet' => $tweet
+            'tweet' => $tweet,
+            'comments' => $tweet->comments->sortByDesc('created_at'),
+            'previousUrl' => url()->previous(),
+            'currentUrl' => url()->current()
         ]);
     }
 
@@ -111,8 +112,11 @@ class TweetController extends Controller
      */
     public function edit(Tweet $tweet)
     {
+        $this->authorize('edit-tweet', $tweet);
         return view('tweets.edit', [
-            'tweet' => $tweet
+            'tweet' => $tweet,
+            'previousUrl' => url()->previous(),
+            'currentUrl' => url()->current()
         ]);
     }
 
@@ -138,6 +142,7 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
+        $this->authorize('edit-tweet', $tweet);
         Log::info('Tweet deleted by user', [
             'tweet_id' => $tweet->id,
             'user_id' => Auth::id(),

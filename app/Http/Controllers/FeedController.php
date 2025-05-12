@@ -35,8 +35,5 @@ class FeedController extends Controller
         } else {
             abort(403);
         }
-        
     }
-
-    
 }
