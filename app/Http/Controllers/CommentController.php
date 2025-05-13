@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use App\Models\Comment;
+use App\Rules\NoProfanity;
+use App\Rules\NoScriptTags;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -46,7 +48,7 @@ class CommentController extends Controller
     public function store(Request $request, Tweet $tweet)
     {
         $request->validate([
-            'comment' => ['required']
+            'comment' => ['required', 'max:200', new NoScriptTags, new NoProfanity]
         ]);
 
         $user = Auth::user();

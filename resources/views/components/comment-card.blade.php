@@ -16,7 +16,7 @@
                     @endphp
                 </a>
 
-                <p class="text-sm">{{ $comment->content }}</p>
+                <p class="text-sm">{{$comment->content}}</p>
             </div>
             @can('delete-comment', $comment)
                 <div class="my-auto">
