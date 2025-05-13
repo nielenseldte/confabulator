@@ -3,7 +3,7 @@
 
    <div class="mt-8">
         <x-forms.form method="POST" action="/tweets">
-            <x-forms.textarea label="Message content" name="tweet" placeholder="converse here"></x-forms.textarea>
+            <x-forms.textarea autofocus label="Message content" name="tweet" placeholder="converse here"></x-forms.textarea>
     
     
     

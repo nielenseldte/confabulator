@@ -24,7 +24,7 @@
     <div>
         <h2 class="text-lg underline decoration-4 decoration-blue-700">Bio:</h2>
         @if ($user->about)
-            <p class="italic">{{ $user->about }}</p>
+            <p class="italic">{!! nl2br(clean($user->about)) !!}</p>
         @else
             @can('edit-profile', $user)
                 <div class="flex justify-start space-x-2">

@@ -4,7 +4,7 @@
     <x-tweet-card-big :$tweet />
     <div class="mt-8">
         <x-forms.form method="POST" action="/tweets/{{ $tweet->id }}/comments">
-            <x-forms.textarea label="Comment" name="comment" placeholder="comment here"></x-forms.textarea>
+            <x-forms.textarea autofocus label="Comment" name="comment" placeholder="comment here"></x-forms.textarea>
     
     
     

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\NoProfanity;
+use App\Rules\NoScriptTags;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,7 @@ class UserProfileController extends Controller
         $this->authorize('edit-profile', $user);
         $request->validate([
             'user_name' => ['required', 'min:2'],
+            'about' => ['max:350', new NoScriptTags, new NoProfanity]
         ]);
 
         $user->update([

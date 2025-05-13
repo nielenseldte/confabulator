@@ -10,9 +10,7 @@
             <h1 class="text-2xl font-bold text-center text-blue-700 mb-6">Our 7 Rules of Engagement:</h1>
             <ol type="1" class="pl-5 list-decimal text-lg leading-relaxed">
                 <li class="mb-4">
-                    <strong>Rule #1 - No Swearing:</strong> Swearing is a sign of a weak mind and a weaker character,
-                    reflecting a
-                    lack of restraint and poise.
+                    <strong>Rule #1 - Be Friendly and Accommodating:</strong> We are here to enjoy each other's conversation and ideas, people have different opinions and that is what make us unique. Please respect this.
                 </li>
                 <li class="mb-4">
                     <strong>Rule #2 - No Bullying:</strong> Kindness is the hallmark of the truly refined. Confabulator
@@ -22,7 +20,7 @@
                 <li class="mb-4">
                     <strong>Rule #3 - No Profanity:</strong> Our discourse is polished and intellectual, leaving no room
                     for
-                    any profanity.
+                    any profanity. Our systems automatically scan your conversations, comments, and bio for profanity before you submit it.
                 </li>
                 <li class="mb-4">
                     <strong>Rule #4 - No Political Discussions:</strong> While politics has its merits, classy
@@ -32,7 +30,7 @@
                 <li class="mb-4">
                     <strong>Rule #5 - No Slang Language:</strong> Confabulator is a place for people of sophistication;
                     we strive
-                    for eloquence and steer clear of informal or slang expressions.
+                    for eloquence and steer clear of informal or slang expressions. Whilst this rule is not enforced, we want to encourage the use of correct language.
                 </li>
                 <li class="mb-4">
                     <strong>Rule #6 - Act Like Intellectuals:</strong> Celebrate your intellect by engaging with

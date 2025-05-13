@@ -100,7 +100,7 @@ class User extends Authenticatable
 
     public function dislikes(): HasMany
     {
-        return $this->hasMany(Dislike::class);        
+        return $this->hasMany(Dislike::class);
     }
 
     public function followedUsers()
@@ -130,6 +130,4 @@ class User extends Authenticatable
     {
         return $this->followedUsers()->where('followed_id', $user->id)->exists();
     }
-
-
 }

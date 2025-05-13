@@ -8,7 +8,7 @@
         </a>
 
     </div>
-    <p class="break-words">{!! nl2br($tweet->body) !!}</p>
+    <p class="break-words">{!! nl2br(clean($tweet->body)) !!}</p>
     <div class="flex items-center justify-between mb-4">
         <p class="mt-2 text-xs">
             {{ $tweet->created_at->isToday() ? 'Today | ' . $tweet->created_at->format('H:m') : ($tweet->created_at->isYesterday() ? 'Yesterday | ' . $tweet->created_at->format('H:m') : $tweet->created_at->format('d-m-Y | H:m')) }}
