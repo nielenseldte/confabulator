@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="bg-black p-8 rounded-lg shadow-lg">
+    <div class="bg-black p-2 sm:p-8 rounded-lg shadow-lg">
         <x-section-heading>Welcome to Confabulator</x-section-heading>
         <p class="text-gray-200 text-lg leading-relaxed mb-4 mt-3">
             Confabulator is the digital haven for those who embody sophistication and intellectual curiosity.

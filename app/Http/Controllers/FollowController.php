@@ -17,11 +17,15 @@ class FollowController extends Controller
         $authed_user = Auth::user();
 
         if ($authed_user) {
-            $authed_user->followedUsers()->attach($user->id);
-            return redirect()->back();
+            if (!$authed_user->isFollowing($user)) {
+                $authed_user->followedUsers()->attach($user->id);
+                return redirect()->back();
+            }
         } else {
             return redirect('/login');
         }
+           
+        
     }
 
     /**
@@ -32,8 +36,10 @@ class FollowController extends Controller
         $authed_user = Auth::user();
 
         if ($authed_user) {
-            $authed_user->followedUsers()->detach($user->id);
-            return redirect()->back();
+            if ($authed_user->isFollowing($user)) {
+                $authed_user->followedUsers()->detach($user->id);
+                return redirect()->back();
+            }
         } else {
             return redirect('/login');
         }

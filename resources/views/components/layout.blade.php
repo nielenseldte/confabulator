@@ -16,14 +16,13 @@
 
 <body class="bg-black text-white font-ibm-plex-mono pb-12 selection:bg-blue-700">
 
-    <div class="px-10">
+    <div class="px-4 sm:px-6 lg:px-10">
 
         @if ($nav)
             <x-nav-bar />
         @endif
 
-
-        <main class="mt-10 max-w-[986px] mx-auto">
+        <main class="mt-6 sm:mt-10 max-w-full sm:max-w-[700px] lg:max-w-[986px] mx-auto">
             {{ $slot }}
         </main>
 

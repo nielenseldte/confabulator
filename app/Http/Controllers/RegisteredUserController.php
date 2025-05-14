@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\NoProfanity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
@@ -22,7 +23,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'min:2'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed', Password::min(6)],
-            'user_name' => ['required', 'min:2']
+            'user_name' => ['required', 'min:2', new NoProfanity]
         ]);
 
         $user = User::create($validated);
@@ -30,9 +31,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect('/');
-
-
-
         //Password::min(6)->mixedCase()->uncompromised(1)->letters()->numbers()->symbols()
 
     }

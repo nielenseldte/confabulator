@@ -19,6 +19,9 @@ class NoProfanity implements ValidationRule
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
+        if (!$value) {
+            return;
+        }
         $pattern = "/
     (
         [fph]+[^a-zA-Z0-9]{0,3}([\*\@u]{0,1})[^a-zA-Z0-9]{0,3}[ck]+[^a-zA-Z0-9]{0,3}[kc]+ |

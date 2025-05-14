@@ -1,5 +1,5 @@
 @props(['comments', 'tweet'])
-<div class="w-1/2 mx-auto space-y-5">
+<div class="w-3/4 sm:w-1/2 mx-auto space-y-5">
     <div class="flex items-center justify-between">
         <h1>Comments ({{ $comments->count() }})</h1>
         @auth
