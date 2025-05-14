@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class LikeController extends Controller
 {
 
-
-
-
     /**
      * Store a newly created resource in storage.
      */

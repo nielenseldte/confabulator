@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Tweet;
+use App\Rules\NoExternalLinks;
 use App\Rules\NoProfanity;
 use App\Rules\NoScriptTags;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tweet' => ['required', 'min:2', 'max:450', new NoScriptTags, new NoProfanity]
+            'tweet' => ['required', 'min:2', 'max:450', new NoScriptTags, new NoProfanity, new NoExternalLinks]
         ]);
 
         $user = Auth::user();
@@ -129,7 +130,7 @@ class TweetController extends Controller
     {
         $this->authorize('edit-tweet', $tweet);
         $request->validate([
-            'tweet' => ['required', 'min:2', 'max:450', new NoScriptTags]
+            'tweet' => ['required', 'min:2', 'max:450', new NoScriptTags, new NoProfanity, new NoExternalLinks]
         ]);
 
         $tweet->update([
