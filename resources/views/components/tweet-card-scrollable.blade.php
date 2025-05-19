@@ -1,6 +1,6 @@
 @props(['tweet'])
 
-<x-tweet-panel id="tweet-{{ $tweet->id }}">
+<x-tweet-panel-borderless id="tweet-{{ $tweet->id }}">
     <div class="flex items-center justify-between">
         <a href="/users/{{ $tweet->user->id }}" class="text-xl text-blue-600 underline hover:text-white w-fit">
             @php
@@ -35,4 +35,4 @@
         class="hidden">
         @csrf
     </form>
-</x-tweet-panel>
+</x-tweet-panel-borderless>
