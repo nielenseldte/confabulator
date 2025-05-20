@@ -16,7 +16,11 @@
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
+{{-- @if (session('success')) 
+    <script>
+        console.log('success');
+    </script>
+@endif --}}
 <body class="bg-black text-white font-ibm-plex-mono pb-12 selection:bg-blue-700">
 
     <div class="px-4 sm:px-6 lg:px-10">
