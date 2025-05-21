@@ -19,13 +19,14 @@
     @else
         <x-section-heading>Your Profile</x-section-heading>
     @endif
+
     <x-user-profile-card :$user />
 
     @if (!$tweets->isEmpty())
         <div x-data="{ showTweets: false }">
             <div class="flex justify-center mt-5">
                 <x-js-button @click="showTweets = !showTweets" class="cursor-pointer">
-                    <span x-text="showTweets ? 'Hide Confabulations' : 'Show Confabulations'"></span>
+                    <span x-text="showTweets ? 'Hide Posts' : 'Show Posts'"></span>
                 </x-js-button>
             </div>
             <div class="mt-8" x-cloak x-show="showTweets" x-transition>

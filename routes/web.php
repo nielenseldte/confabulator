@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ProfilePictureController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\TrendingTweetsController;
@@ -22,6 +23,7 @@ Route::resource('users', UserProfileController::class)->only('show');
 Route::resource('users', UserProfileController::class)
     ->only(['edit', 'update'])
     ->middleware('auth');
+Route::patch('/users/{user}/profile-picture', ProfilePictureController::class);
 
 Route::resource('tweets.comments', CommentController::class)
     ->only(['create', 'store'])
