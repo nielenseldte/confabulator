@@ -2,14 +2,14 @@
     $hasProfilePicError = $errors->has('profile_pic');
 @endphp
 <x-layout>
-    <x-section-heading>Edit your public profile, {{ $user->name }}</x-section-heading>
+    <x-layout.section-heading>Edit your public profile, {{ $user->name }}</x-layout.section-heading>
     <div class="mt-8">
         <div x-data="{ open: {{ $hasProfilePicError ? 'true' : 'false' }} }" class="flex justify-start space-x-5 items-center max-w-2xl mx-auto mb-5">
             <div>
                 <x-profile-picture src="{{ asset('storage/' . $user->profile_pic) }}" />
             </div>
             <div>
-                <x-js-button x-on:click="open = true" class="border-0">
+                <x-buttons.js-button x-on:click="open = true" class="border-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-pencil-icon lucide-pencil">
@@ -17,7 +17,7 @@
                             d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
                         <path d="m15 5 4 4" />
                     </svg>
-                </x-js-button>
+                </x-buttons.js-button>
             </div>
             <x-modals.form-modal>
                 <x-slot:heading>Edit Your Profile Picture</x-slot>

@@ -26,7 +26,7 @@
     <div class="px-4 sm:px-6 lg:px-10">
 
         @if ($nav)
-            <x-nav-bar />
+            <x-layout.nav-bar />
         @endif
 
         <main class="mt-6 sm:mt-10 max-w-full sm:max-w-[700px] lg:max-w-[986px] mx-auto">

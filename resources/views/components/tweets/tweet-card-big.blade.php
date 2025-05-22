@@ -1,5 +1,5 @@
 @props(['tweet'])
-<x-tweet-panel-borderless>
+<x-tweets.tweet-panel-borderless>
     <div class="flex items-center justify-between">
         <a href="/users/{{ $tweet->user->id }}" class="text-xl text-blue-600 underline hover:text-white w-fit">
             @php
@@ -14,19 +14,19 @@
 
         <div class="space-x-1">
 
-            <x-interact-button type="like" form="like-form" :active="Auth::check() && $tweet->likes->isNotEmpty()" />
+            <x-buttons.interact-button type="like" form="like-form" :active="Auth::check() && $tweet->likes->isNotEmpty()" />
             <span>{{ $tweet->likes_count }}</span>
 
 
-            <x-interact-button type="dislike" form="dislike-form" :active="Auth::check() && $tweet->dislikes->isNotEmpty()" />
+            <x-buttons.interact-button type="dislike" form="dislike-form" :active="Auth::check() && $tweet->dislikes->isNotEmpty()" />
             <span>{{ $tweet->dislikes_count }}</span>
 
         </div>
     </div>
     @can('edit-tweet', $tweet)
         <div x-data="{ open: false }" class="flex justify-start space-x-2">
-            <x-manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-manage-button>
-            <x-manage-button x-on:click="open = true" type="delete">Delete</x-manage-button>
+            <x-buttons.manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-buttons.manage-button>
+            <x-buttons.manage-button x-on:click="open = true" type="delete">Delete</x-buttons.manage-button>
             <x-modals.confirmation-modal>
                 <x-slot:heading>Confirmation Required</x-slot>
                 <x-slot:message>Are you sure you want to delete this conversation?</x-slot>

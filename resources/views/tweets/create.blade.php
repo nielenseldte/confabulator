@@ -1,5 +1,5 @@
 <x-layout>
-    <x-section-heading>Confabulate!</x-section-heading>
+    <x-layout.section-heading>Confabulate!</x-layout.section-heading>
 
    <div class="mt-8">
         <x-forms.form method="POST" action="/tweets">

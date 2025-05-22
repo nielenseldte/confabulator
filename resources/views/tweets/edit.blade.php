@@ -1,5 +1,5 @@
 <x-layout>
-    <x-section-heading>Edit</x-section-heading>
+    <x-layout.section-heading>Edit</x-layout.section-heading>
 
     <div class="mt-8">
         <x-forms.form method="POST" action="/tweets/{{ $tweet->id }}">

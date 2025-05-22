@@ -3,8 +3,8 @@
     <div class="flex items-center justify-between">
         <h1>Comments ({{ $comments->count() }})</h1>
         @auth
-            <x-standard-button href="/tweets/{{ $tweet->id }}/comments/create"
-                class="border border-blue-700 hover:border-white hover:text-white"> + Comment</x-standard-button>
+            <x-buttons.standard-button href="/tweets/{{ $tweet->id }}/comments/create"
+                class="border border-blue-700 hover:border-white hover:text-white"> + Comment</x-buttons.standard-button>
         @endauth
     </div>
     @forelse ($comments as $comment)

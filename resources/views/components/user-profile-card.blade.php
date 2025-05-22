@@ -1,8 +1,8 @@
 @props(['user'])
 @can('edit-profile', $user)
     <div class="w-full sm:w-3/4 flex justify-end mx-auto mt-10 space-x-2">
-        <x-manage-button href="/users/{{ $user->id }}/edit" type="edit">Edit</x-manage-button>
-        <x-manage-button type="delete">Delete</x-manage-button>
+        <x-buttons.manage-button href="/users/{{ $user->id }}/edit" type="edit">Edit</x-buttons.manage-button>
+        <x-buttons.manage-button type="delete">Delete</x-buttons.manage-button>
     </div>
 @endcan
 
