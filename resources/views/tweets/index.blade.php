@@ -1,5 +1,5 @@
 <x-layout>
-    <x-section-heading>Latest Discussions</x-section-heading>
+    <x-layout.section-heading>Latest Discussions</x-layout.section-heading>
     {{-- @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -7,12 +7,12 @@
     @endif --}}
 
     <div class="flex items-center justify-end">
-        <x-tweet-button href="/tweets/create">Confabulate</x-tweet-button>
+        <x-buttons.tweet-button href="/tweets/create">Confabulate</x-buttons.tweet-button>
     </div>
 
 
     @foreach ($tweets as $tweet)
-        <x-tweet-card :$tweet />
+        <x-tweets.tweet-card :$tweet />
     @endforeach
     <div class="mt-8">
         {{ $tweets->links() }}

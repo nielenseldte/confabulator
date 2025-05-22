@@ -60,6 +60,7 @@ class UserProfileController extends Controller
             'about' => ['max:350', new NoScriptTags, new NoProfanity, new NoExternalLinks]
         ]);
 
+        
         $user->update([
             'user_name' => request('user_name'),
             'about' => request('about')

@@ -48,7 +48,7 @@ class TweetController extends Controller
      */
     public function create()
     {
-       
+
         if (!Auth::check()) {
             return redirect('/login');
         }
@@ -77,8 +77,7 @@ class TweetController extends Controller
             'tweet_content' => $tweet->body
         ]);
 
-        // redirect()->route('tweets.index');
-        return redirect('/');
+        return redirect()->route('tweets.index')->with('success', 'Tweet successfully created');
     }
 
     /**
@@ -137,7 +136,13 @@ class TweetController extends Controller
             'body' => request('tweet')
         ]);
 
-        return redirect('/tweets/' . $tweet->id);
+        Log::info("tweet with id: {$tweet->id} updated", [
+            'tweet_id' => $tweet->id,
+            'user_id' => Auth::id(),
+            'timestamp' => now()
+        ]);
+
+        return redirect()->route('tweets.show', ['tweet' => $tweet]);
     }
 
     /**
@@ -152,6 +157,6 @@ class TweetController extends Controller
             'timestamp' => now()
         ]);
         $tweet->delete();
-        return redirect('/tweets')->with('success', 'Tweet deleted successfully.');;
+        return redirect()->route('tweets.index')->with('success', 'Tweet deleted successfully.');;
     }
 }

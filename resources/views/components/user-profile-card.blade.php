@@ -1,12 +1,26 @@
 @props(['user'])
 @can('edit-profile', $user)
     <div class="w-full sm:w-3/4 flex justify-end mx-auto mt-10 space-x-2">
-        <x-manage-button href="/users/{{ $user->id }}/edit" type="edit">Edit</x-manage-button>
-        <x-manage-button type="delete">Delete</x-manage-button>
+        <x-buttons.manage-button href="/users/{{ $user->id }}/edit" type="edit">Edit</x-buttons.manage-button>
+        <x-buttons.manage-button type="delete">Delete</x-buttons.manage-button>
     </div>
 @endcan
 
 <div class="border border-blue-700 p-5 flex flex-col space-y-5 w-full sm:w-3/4 mx-auto mt-2 rounded-xl">
+    @if ($user->profile_pic) 
+    <div x-data="{ open: false }" class="flex justify-center">
+        <x-profile-picture src="{{ asset('storage/' . $user->profile_pic) }}"  x-on:click="open = true" />
+        <div x-cloak x-show="open" x-transition.opacity x-on:click="open = false"
+            class="fixed inset-0 flex items-center justify-center bg-black/60">
+            <div class="relative">
+                <img src="{{ asset('storage/' . $user->profile_pic) }}"
+                    class="w-64 h-64 rounded-md object-cover border-4 border-blue-700">
+                <button @click="open = false"
+                    class="absolute top-2 right-2 cursor-pointer hover:text-red-600 transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="flex-wrap flex items-center justify-between">
         <div>
             <h2 class="text-lg underline decoration-4 decoration-blue-700">

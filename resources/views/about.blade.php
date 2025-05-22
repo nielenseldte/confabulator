@@ -1,6 +1,6 @@
 <x-layout>
     <div class="bg-black p-2 sm:p-8 rounded-lg shadow-lg">
-        <x-section-heading>Welcome to Confabulator</x-section-heading>
+        <x-layout.section-heading>Welcome to Confabulator</x-layout.section-heading>
         <p class="text-gray-200 text-lg leading-relaxed mb-4 mt-3">
             Confabulator is the digital haven for those who embody sophistication and intellectual curiosity.
             Our platform is designed for refined conversations, where elegance and thoughtfulness take center stage.
