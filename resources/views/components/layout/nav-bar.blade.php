@@ -29,8 +29,24 @@
         <x-layout.nav-link href="/about" :active="request()->is('about')">About</x-layout.nav-link>
     </div>
 
-    @auth
-        <div class="space-x-6 font-bold flex">
+
+    <div x-data="{ showSearchInput: false }" class="space-x-6 font-bold flex">
+        <form action="/search" class="flex gap-1 items-center" method="GET">
+            <x-modals.search-modal>
+                <input name="q" type="text"
+                    class="text-xs tracking-wide text-blue-700 shadow-xl px-4 py-2 w-full" placeholder="search profiles.."
+                    @update="showSearchInput = false">
+                <button type="submit"
+                    class="text-blue-700 mr-3 hover:text-white transition-colors duration-200 text-xs cursor-pointer">Go</button>
+            </x-modals.search-modal>
+            <svg @click="showSearchInput = !showSearchInput" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                stroke="currentColor"
+                class="text-blue-700 w-6 h-6 hover:text-white transition-colors duration-300 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+        </form>
+        @auth
             <a class="hover:text-blue-700 underline" href="/users/{{ Auth::user()->id }}">{{ Auth::user()->user_name }}</a>
             <form method="POST" action="/logout">
                 @csrf
@@ -38,17 +54,14 @@
 
                 <button class="hover:text-red-600 cursor-pointer">Log Out</button>
             </form>
-        </div>
-
-    @endauth
-
-    @guest
-        <div class="space-x-6">
+        @endauth
+        @guest
             <x-layout.nav-link href="/register">Create Account</x-layout.nav-link>
             <x-layout.nav-link href="/login">Log In</x-layout.nav-link>
+        @endguest
+    </div>
 
-        </div>
-    @endguest
+
 
 
 </nav>

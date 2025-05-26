@@ -1,7 +1,7 @@
 <x-layout>
-    <div class="ml-3 flex justify-start"><x-back-button
-             href="{{ $previousUrl !== $currentUrl ? $previousUrl : '/tweets' }}">Back</x-back-button></div>
-    <x-tweet-card-big :$tweet />
+    <div class="ml-3 flex justify-start"><x-buttons.back-button
+             href="{{ $previousUrl !== $currentUrl ? $previousUrl : '/tweets' }}">Back</x-buttons.back-button></div>
+    <x-tweets.tweet-card-big :$tweet />
     <div class="mt-8">
         <x-forms.form method="POST" action="/tweets/{{ $tweet->id }}/comments">
             <x-forms.textarea autofocus label="Comment" name="comment" placeholder="comment here"></x-forms.textarea>
