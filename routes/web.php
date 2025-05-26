@@ -9,6 +9,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfilePictureController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TrendingTweetsController;
 use App\Http\Controllers\UserProfileController;
 
@@ -57,3 +58,5 @@ Route::post('/tweets/{tweet}/dislike', [DislikeController::class, 'store'])->nam
 //Follow and Unfollow
 Route::post('/users/{user}/follow', [FollowController::class, 'store'])->name('user.follow')->middleware('auth');
 Route::delete('/users/{user}/unfollow', [FollowController::class, 'destroy'])->name('user.unfollow')->middleware('auth');
+
+Route::get('/search', SearchController::class)->name('search');
