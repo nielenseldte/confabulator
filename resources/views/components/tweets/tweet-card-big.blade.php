@@ -23,7 +23,7 @@
 
         </div>
     </div>
-    @can('edit-tweet', $tweet)
+    @can('update', $tweet)
         <div x-data="{ open: false }" class="flex justify-start space-x-2">
             <x-buttons.manage-button type="edit" href="/tweets/{{ $tweet->id }}/edit">Edit</x-buttons.manage-button>
             <x-buttons.manage-button x-on:click="open = true" type="delete">Delete</x-buttons.manage-button>
