@@ -18,7 +18,7 @@
 
                 <p class="text-sm">{{$comment->content}}</p>
             </div>
-            @can('delete-comment', $comment)
+            @can('delete', $comment)
                 <div class="my-auto">
                     <button class="cursor-pointer" form="delete-comment-form-{{ $comment->id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"

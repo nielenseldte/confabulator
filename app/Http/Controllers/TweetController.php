@@ -114,7 +114,7 @@ class TweetController extends Controller
      */
     public function edit(Tweet $tweet)
     {
-        $this->authorize('edit-tweet', $tweet);
+        $this->authorize('update', $tweet);
         return view('tweets.edit', [
             'tweet' => $tweet,
             'previousUrl' => url()->previous(),
@@ -127,7 +127,7 @@ class TweetController extends Controller
      */
     public function update(Request $request, Tweet $tweet)
     {
-        $this->authorize('edit-tweet', $tweet);
+        $this->authorize('update', $tweet);
         $request->validate([
             'tweet' => ['required', 'min:2', 'max:450', new NoScriptTags, new NoProfanity, new NoExternalLinks]
         ]);
@@ -150,7 +150,7 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
-        $this->authorize('edit-tweet', $tweet);
+        $this->authorize('delete', $tweet);
         Log::info('Tweet deleted by user', [
             'tweet_id' => $tweet->id,
             'user_id' => Auth::id(),

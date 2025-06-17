@@ -67,7 +67,7 @@ class CommentController extends Controller
      */
     public function destroy(Tweet $tweet, Comment $comment)
     {
-        $this->authorize('delete-comment', $comment);
+        $this->authorize('delete', $comment);
         Log::info('DELETE request URL:', ['url' => request()->fullUrl()]);
 
         $comment->delete();

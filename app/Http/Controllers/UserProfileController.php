@@ -46,7 +46,7 @@ class UserProfileController extends Controller
 
     public function edit(User $user)
     {
-        $this->authorize('edit-profile', $user);
+        $this->authorize('update', $user);
         return view('users.edit', [
             'user' => $user
         ]);
@@ -54,7 +54,7 @@ class UserProfileController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $this->authorize('edit-profile', $user);
+        $this->authorize('update', $user);
         $request->validate([
             'user_name' => ['required', 'min:2', new NoProfanity],
             'about' => ['max:350', new NoScriptTags, new NoProfanity, new NoExternalLinks]

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Comment;
 use App\Models\User;
 use App\Models\Tweet;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -28,16 +29,9 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard(true);
         Model::preventLazyLoading(! app()->isProduction());
 
-        Gate::define('edit-tweet', function (User $user, Tweet $tweet) {
-            return $user->id === $tweet->user_id;
+        Carbon::macro('inApplicationTimezone', function () {
+            return $this->tz(config('app.timezone_display'));
         });
 
-        Gate::define('delete-comment', function (User $user, Comment $comment) {
-            return $user->id === $comment->user_id;
-        });
-
-        Gate::define('edit-profile', function(User $user, User $profileUser){
-            return $user->id === $profileUser->id;
-        });
     }
 }
