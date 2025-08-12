@@ -14,8 +14,9 @@ class FeedController extends Controller
      */
     public function index(User $user)
     {
-        if (Auth::user()->id === $user->id) {
-            $tweets = Tweet::feed($user)->with([
+        if (Auth::id() === $user->id) {
+            $tweets = Tweet::feed($user)
+            ->with([
                 'user',
                 'likes' => function ($query) use ($user) {
                     $query->where('user_id', $user->id);
@@ -24,9 +25,9 @@ class FeedController extends Controller
                     $query->where('user_id', $user->id);
                 }
             ])
-                ->latest()
-                ->withCount(['likes', 'dislikes'])
-                ->simplePaginate(5);
+            ->latest()
+            ->withCount(['likes', 'dislikes'])
+            ->simplePaginate(5);
 
 
             return view('feed.index', [

@@ -27,10 +27,10 @@ class TweetController extends Controller
                 ->with([
                     'user',
                     'likes' => function ($query) {
-                        $query->where('user_id', Auth::user()->id);
+                        $query->where('user_id', Auth::id());
                     },
                     'dislikes' => function ($query) {
-                        $query->where('user_id', Auth::user()->id);
+                        $query->where('user_id', Auth::id());
                     }
                 ])
                 ->withCount(['likes', 'dislikes'])

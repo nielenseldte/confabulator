@@ -32,7 +32,7 @@
             <div class="mt-8" x-cloak x-show="showTweets" x-transition>
                 <x-tweets.scrollable-tweet-box>
                     @foreach ($tweets as $tweet)
-                        <div><x-tweets.tweet-card-scrollable :$tweet /></div>
+                        <x-tweets.tweet-card-scrollable :$tweet />
                     @endforeach
                 </x-tweets.scrollable-tweet-box>
             </div>
