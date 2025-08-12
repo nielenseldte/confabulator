@@ -21,9 +21,6 @@ class SearchController extends Controller
 
         $users = User::latest()->where('user_name', 'like', '%' . $query . '%')->simplePaginate(5);
 
-        return view('users.index', [
-            'users' => $users,
-            'query' => $query,
-        ]);
+        return view('users.index', compact('users', 'query'));
     }
 }

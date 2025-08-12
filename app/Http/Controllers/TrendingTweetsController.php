@@ -27,8 +27,6 @@ class TrendingTweetsController extends Controller
                 ->withCount(['likes', 'dislikes'])
                 ->simplePaginate(5);
         }
-        return view('trending.index', [
-            'tweets' => $tweets
-        ]);
+        return view('trending.index', compact('tweets'));
     }
 }

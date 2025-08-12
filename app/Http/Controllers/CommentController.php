@@ -28,10 +28,10 @@ class CommentController extends Controller
             $tweet->load([
                 'user',
                 'likes' => function ($query) {
-                    $query->where('user_id', Auth::user()->id);
+                    $query->where('user_id', Auth::id());
                 },
                 'dislikes' => function ($query) {
-                    $query->where('user_id', Auth::user()->id);
+                    $query->where('user_id', Auth::id());
                 }
             ])->loadCount(['likes', 'dislikes']);
         }
@@ -58,7 +58,7 @@ class CommentController extends Controller
             'tweet_id' => $tweet->id,
             'content' => request('comment')
         ]);
-        return redirect('/tweets/' . $tweet->id);
+        return redirect()->route('tweets.show', $tweet);
     }
 
 

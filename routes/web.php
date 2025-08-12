@@ -59,4 +59,5 @@ Route::post('/tweets/{tweet}/dislike', [DislikeController::class, 'store'])->nam
 Route::post('/users/{user}/follow', [FollowController::class, 'store'])->name('user.follow')->middleware('auth');
 Route::delete('/users/{user}/unfollow', [FollowController::class, 'destroy'])->name('user.unfollow')->middleware('auth');
 
+//Search route
 Route::get('/search', SearchController::class)->name('search');

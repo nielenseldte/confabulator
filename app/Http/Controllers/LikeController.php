@@ -12,7 +12,7 @@ class LikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Tweet $tweet)
+    public function store(Tweet $tweet)
     {
         $user = Auth::user();
         $tweet_id = $tweet->id;

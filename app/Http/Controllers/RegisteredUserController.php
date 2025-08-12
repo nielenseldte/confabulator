@@ -31,7 +31,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect('/');
-        //Password::min(6)->mixedCase()->uncompromised(1)->letters()->numbers()->symbols()
 
     }
 }

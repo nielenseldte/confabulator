@@ -20,8 +20,6 @@
                 <x-forms.danger-button buttonType="a" href="/tweets">Cancel</x-forms.danger-button>
                 <x-forms.button>Create Account</x-forms.button>
             </div>
-
-            {{-- <x-forms.input label="Profile Picture" name="profile_picture" type="file" /> --}}
         </x-forms.form>
     </div>
 </x-layout>

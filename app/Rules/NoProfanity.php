@@ -35,17 +35,5 @@ class NoProfanity implements ValidationRule
         if (Blasp::check($value)->hasProfanity() || preg_match($pattern, $value)) {
             $fail("Your {$attribute} contains profanity, this is against our policies. Please refer to the rules of our platform in our About section.");
         }
-        // try {
-        //     $query = [
-        //         'text' => $value
-        //     ];
-        //     $response = Http::get('https://www.purgomalum.com/service/containsprofanity', $query);
-
-        //     if ($response->successful() && $response->body() === 'true') {
-        //         $fail("Your {$attribute} contains profanity, this is against our policies. Please refer to the rules of our platform in our About section.");
-        //     }
-        // } catch (\Exception $e) {
-        //     Log::error('PurgoMalum API has failed: ' . $e->getMessage());
-        // }
     }
 }

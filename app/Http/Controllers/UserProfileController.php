@@ -24,10 +24,10 @@ class UserProfileController extends Controller
                 ->with([
                     'user',
                     'likes' => function ($query) {
-                        $query->where('user_id', Auth::user()->id);
+                        $query->where('user_id', Auth::id());
                     },
                     'dislikes' => function ($query) {
-                        $query->where('user_id', Auth::user()->id);
+                        $query->where('user_id', Auth::id());
                     }
                 ])
                 ->withCount(['likes', 'dislikes'])
@@ -35,7 +35,6 @@ class UserProfileController extends Controller
                 ->get();
         }
         $user->loadCount(['tweets', 'followers', 'followedUsers']);
-        //dd($user->toArray());
         return view('users.show', [
             'user' => $user,
             'tweets' => $tweets,
@@ -47,9 +46,7 @@ class UserProfileController extends Controller
     public function edit(User $user)
     {
         $this->authorize('update', $user);
-        return view('users.edit', [
-            'user' => $user
-        ]);
+        return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -66,6 +63,6 @@ class UserProfileController extends Controller
             'about' => request('about')
         ]);
 
-        return redirect('/users/' . $user->id);
+        return redirect()->route('users.show', $user);
     }
 }
