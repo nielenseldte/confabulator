@@ -9,7 +9,7 @@
     <div class="space-x-6 hidden sm:block">
         <x-layout.nav-link href="/tweets" :active="request()->is('tweets')">Latest</x-layout.nav-link>
         @auth
-            <x-layout.nav-link href="/users/{{ Auth::user()->id }}/feed" :active="request()->is('users/' . Auth::user()->id . '/feed')">Feed</x-layout.nav-link>
+            <x-layout.nav-link href="/users/{{ Auth::id() }}/feed" :active="request()->is('users/' . Auth::id() . '/feed')">Feed</x-layout.nav-link>
         @endauth
         <x-layout.nav-link href="/trending" :active="request()->is('trending')">Trending</x-layout.nav-link>
         <x-layout.nav-link href="/about" :active="request()->is('about')">About Confabulator</x-layout.nav-link>
@@ -23,7 +23,7 @@
     <div x-cloak x-show="show" x-transition class="space-x-4 w-full mb-8">
         <x-layout.nav-link href="/tweets" :active="request()->is('tweets')">Latest</x-layout.nav-link>
         @auth
-            <x-layout.nav-link href="/users/{{ Auth::user()->id }}/feed" :active="request()->is('users/' . Auth::user()->id . '/feed')">Feed</x-layout.nav-link>
+            <x-layout.nav-link href="/users/{{ Auth::id() }}/feed" :active="request()->is('users/' . Auth::id() . '/feed')">Feed</x-layout.nav-link>
         @endauth
         <x-layout.nav-link href="/trending" :active="request()->is('trending')">Trending</x-layout.nav-link>
         <x-layout.nav-link href="/about" :active="request()->is('about')">About</x-layout.nav-link>

@@ -1,10 +1,8 @@
 <x-layout>
     <x-layout.section-heading>Your Feed</x-layout.section-heading>
-
     <div class="flex items-center justify-end">
         <x-buttons.tweet-button href="/tweets/create">Confabulate</x-buttons.tweet-button>
     </div>
-   
        @forelse ($tweets as $tweet) 
          <x-tweets.tweet-card :$tweet />
        @empty 
