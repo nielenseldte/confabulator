@@ -4,7 +4,7 @@
             href="{{ $previousUrl !== $currentUrl && $previousUrl !== route('users.edit', ['user' => $user->id]) ? $previousUrl : '/tweets' }}"
             class="border">Back</x-buttons.back-button>
         @auth
-            @if (Auth::user() && Auth::user()->id !== $user->id)
+            @if (Auth::user() && Auth::id() !== $user->id)
                 @if (!Auth::user()->isFollowing($user))
                     <x-forms.button form="follow-form">Follow</x-forms.button>
                 @else
@@ -14,7 +14,7 @@
         @endauth
     </div>
 
-    @if (!Auth::user() || Auth::user()->id !== $user->id)
+    @if (!Auth::user() || Auth::id() !== $user->id)
         <x-layout.section-heading>Viewing Profile Of {{ $user->user_name }}</x-layout.section-heading>
     @else
         <x-layout.section-heading>Your Profile</x-layout.section-heading>

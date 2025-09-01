@@ -6,8 +6,6 @@
          </x-buttons.back-button>
      </div>
      <x-tweets.tweet-card-big :$tweet />
-
-
      <x-comment-card :$comments :$tweet />
 
  </x-layout>
