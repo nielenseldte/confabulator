@@ -1,4 +1,4 @@
-<div x-cloak x-show="open" x-transition.opacity.duration.200ms x-trap.inert.noscroll="open" x-on:keydown.esc.window="open = false" x-on:click.self="open = false" class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-xs sm:items-center lg:p-8" role="dialog" aria-modal="true" aria-labelledby="dangerModalTitle">
+<div x-cloak x-show="open" x-transition.opacity.duration.200ms x-trap.inert.noscroll="open" x-on:keydown.esc.window="open = false" x-on:click.self="open = false" class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 sm:items-center lg:p-8" role="dialog" aria-modal="true" aria-labelledby="dangerModalTitle">
     <!-- Modal Dialog -->
     <div x-show="open" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="flex max-w-lg flex-col gap-4 overflow-hidden rounded-lg border border-blue-700 bg-black/20 text-neutral-300">
         <!-- Dialog Header -->
