@@ -15,7 +15,7 @@
     </div>
     <div>
         @auth
-            @if (Auth::user() && Auth::user()->id !== $user->id)
+            @if (Auth::user() && Auth::id() !== $user->id)
                 @if (!Auth::user()->isFollowing($user))
                     <x-forms.button form="follow-form-{{ $user->id }}">Follow</x-forms.button>
                 @else
